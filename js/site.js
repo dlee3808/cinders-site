@@ -32,6 +32,7 @@
   var hh = document.querySelector('.hh');
   var intro = document.querySelector('.intro');
   var sliceEls = intro ? intro.querySelectorAll('.intro__slices img') : [];
+  var wheel = intro ? intro.querySelector('.intro__wheel') : null;
   var hhSlide = hh ? hh.querySelectorAll('.hh__slide') : [];
   var hhSlice = hh ? hh.querySelector('.hh__slice') : null;
   var phone = function () { return window.innerWidth <= 750; };
@@ -49,12 +50,19 @@
       }
     }
     if (intro) {
-      var pi = ease(progress(intro)), ph = phone();
+      // The slice cluster spins like a wheel as the page scrolls (about a third of a turn per
+      // 100px), and the slices drift outward from the center as the section comes into view.
+      var r = intro.getBoundingClientRect(), vh = window.innerHeight;
+      var travelled = vh - r.top;                                  // px the section has climbed into view
+      wheel.style.transform = 'rotate(' + (-0.3 * travelled) + 'deg)';
+      var pi = ease(progress(intro)), ph = phone(), reach = ph ? 70 : 120;
+      var cx = ph ? 154 : 150, cy = ph ? 151 : 138;               // cluster center, in rem
       sliceEls.forEach(function (im) {
-        var a = im.dataset[ph ? 'pfrom' : 'from'].split(',').map(Number), b = im.dataset[ph ? 'pto' : 'to'].split(',').map(Number);
-        var x = a[0] + (b[0] - a[0]) * pi, y = a[1] + (b[1] - a[1]) * pi;
-        var w = a[2] + (b[2] - a[2]) * pi, h = a[3] + (b[3] - a[3]) * pi;
-        im.style.left = x + 'rem'; im.style.top = y + 'rem'; im.style.width = w + 'rem'; im.style.height = h + 'rem';
+        var st = im.style, d = im.dataset;
+        var x = +getComputedStyle(im).getPropertyValue(ph ? '--px' : '--dx') + (+getComputedStyle(im).getPropertyValue(ph ? '--pw' : '--dw')) / 2;
+        var y = +getComputedStyle(im).getPropertyValue(ph ? '--py' : '--dy') + (+getComputedStyle(im).getPropertyValue(ph ? '--ph' : '--dh')) / 2;
+        var ang = Math.atan2(y - cy, x - cx);
+        st.transform = 'translate(' + (Math.cos(ang) * reach * pi) + 'rem,' + (Math.sin(ang) * reach * pi) + 'rem) rotate(' + getComputedStyle(im).getPropertyValue('--rot') + 'deg)';
       });
     }
   }
