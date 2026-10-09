@@ -42,27 +42,21 @@
       var p = ease(Math.max(0, Math.min(1, (progress(hh) - 0.25) / 0.45))); // starts once the band is a quarter in, settles at 70%
       var dx = (1 - p) * -520;                                   // Happy Hour copy + paddle slide in from the left
       hhSlide.forEach(function (el) { el.style.transform = 'translateX(' + dx + 'rem)'; });
-      if (hhSlice) {                                             // the loose slice drifts toward the pizza, then off to the right
-        var q = progress(hh);
-        var from = phone() ? [-120, 0] : [-762, 93], mid = [0, 0], to = phone() ? [220, -30] : [529, -19];
-        var pos = q < 0.6 ? lerp2(from, mid, ease(q / 0.6)) : lerp2(mid, to, (q - 0.6) / 0.4);
-        hhSlice.style.transform = 'translate(' + pos[0] + 'rem,' + pos[1] + 'rem)';
+      if (hhSlice) {                                             // the slice rides in with the pie, then shoots out as you scroll on
+        var q = Math.max(0, Math.min(1, (progress(hh) - 0.55) / 0.4)), a = (+hhSlice.dataset.ang) * Math.PI / 180;
+        var reach = phone() ? 320 : 700, qe = q * q;
+        hhSlice.style.transform = 'translate(' + (dx + Math.cos(a) * reach * qe) + 'rem,' + (Math.sin(a) * reach * qe) + 'rem) rotate(' + (60 * q) + 'deg)';
       }
     }
     if (intro) {
-      // The slice cluster spins like a wheel as the page scrolls (about a third of a turn per
-      // 100px), and the slices drift outward from the center as the section comes into view.
-      var r = intro.getBoundingClientRect(), vh = window.innerHeight;
-      var travelled = vh - r.top;                                  // px the section has climbed into view
-      wheel.style.transform = 'rotate(' + (-0.3 * travelled) + 'deg)';
-      var pi = ease(progress(intro)), ph = phone(), reach = ph ? 70 : 120;
-      var cx = ph ? 154 : 150, cy = ph ? 151 : 138;               // cluster center, in rem
+      // The eight slices form a whole pie when the section sits mid-screen (progress ~0.75) and
+      // spin apart above and below that point, so they assemble and come apart in both directions.
+      var p = progress(intro), c = 0.75, t = Math.min(1, Math.abs(p - c) / 0.45), te = ease(t);
+      var dir = p < c ? -1 : 1, ph = phone(), reach = ph ? 150 : 170;
+      wheel.style.transform = 'rotate(' + (-300 * (p - c)) + 'deg)';
       sliceEls.forEach(function (im) {
-        var st = im.style, d = im.dataset;
-        var x = +getComputedStyle(im).getPropertyValue(ph ? '--px' : '--dx') + (+getComputedStyle(im).getPropertyValue(ph ? '--pw' : '--dw')) / 2;
-        var y = +getComputedStyle(im).getPropertyValue(ph ? '--py' : '--dy') + (+getComputedStyle(im).getPropertyValue(ph ? '--ph' : '--dh')) / 2;
-        var ang = Math.atan2(y - cy, x - cx);
-        st.transform = 'translate(' + (Math.cos(ang) * reach * pi) + 'rem,' + (Math.sin(ang) * reach * pi) + 'rem) rotate(' + getComputedStyle(im).getPropertyValue('--rot') + 'deg)';
+        var a = (+im.dataset.ang) * Math.PI / 180;
+        im.style.transform = 'translate(' + (Math.cos(a) * reach * te) + 'rem,' + (Math.sin(a) * reach * te) + 'rem) rotate(' + ((+im.dataset.rot) + dir * 140 * te) + 'deg)';
       });
     }
   }
