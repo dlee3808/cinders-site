@@ -49,14 +49,14 @@
       }
     }
     if (intro) {
-      // The eight slices form a whole pie when the section sits mid-screen (progress ~0.75) and
-      // spin apart above and below that point, so they assemble and come apart in both directions.
-      var p = progress(intro), c = 0.75, t = Math.min(1, Math.abs(p - c) / 0.45), te = ease(t);
-      var dir = p < c ? -1 : 1, ph = phone(), reach = ph ? 150 : 170;
-      wheel.style.transform = 'rotate(' + (-300 * (p - c)) + 'deg)';
+      // The eight slices sit as a whole pie until the section reaches mid-screen (progress ~0.75),
+      // then break apart and drift outward with a gentle turn as you keep scrolling down.
+      var p = progress(intro), c = 0.75, t = Math.max(0, Math.min(1, (p - c) / 0.5)), te = ease(t);
+      var ph = phone(), reach = ph ? 150 : 170;
+      wheel.style.transform = 'rotate(' + (-45 * te) + 'deg)';
       sliceEls.forEach(function (im) {
         var a = (+im.dataset.ang) * Math.PI / 180;
-        im.style.transform = 'translate(' + (Math.cos(a) * reach * te) + 'rem,' + (Math.sin(a) * reach * te) + 'rem) rotate(' + ((+im.dataset.rot) + dir * 140 * te) + 'deg)';
+        im.style.transform = 'translate(' + (Math.cos(a) * reach * te) + 'rem,' + (Math.sin(a) * reach * te) + 'rem) rotate(' + ((+im.dataset.rot) + 40 * te) + 'deg)';
       });
     }
   }
