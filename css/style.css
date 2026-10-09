@@ -1,0 +1,356 @@
+/* Cinders Wood Fired Pizza — faithful rebuild of the Wix site (cinderspizza.com).
+   Desktop values were measured from the live site at 1280px wide and written in
+   rem with 1rem = 1px at 1280px (the root font-size scales with the viewport,
+   the way the Wix site does). The phone layout (≤750px) was measured at 375px
+   wide, 1rem = 1px at 375px. */
+
+@font-face { font-family: 'Madefor Text'; src: url(../fonts/madefor-text.woff2) format('woff2'); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: 'Madefor Display'; src: url(../fonts/madefor-display.woff2) format('woff2'); font-weight: 400 700; font-display: swap; }
+
+:root {
+  --red: #D31634;
+  --brown: #21140D;
+  --ink: #2A2A2A;
+  --suez: 'Suez One', serif;
+  --bitter: 'Bitter', serif;
+  --arialblack: 'Arial Black', 'Arial Bold', Arial, sans-serif;
+  --text: 'Madefor Text', Arial, sans-serif;
+  --display: 'Madefor Display', 'Madefor Text', Arial, sans-serif;
+  --toast: 0;
+}
+
+html { font-size: calc(100vw / 1280); scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: #000; font-family: var(--text); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img, video, svg { display: block; }
+a { color: inherit; }
+p, h1, h2, h3, h4, h5, h6 { margin: 0; }
+.cover { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+video.cover { background: #000 center / cover no-repeat; }
+.band { position: relative; overflow: hidden; width: 100%; }
+.edge { position: absolute; left: 0; width: 100%; pointer-events: none; }
+.abs { position: absolute; }
+
+/* Pill buttons (Wix "StylableButton") */
+.btn { display: block; border-radius: 20.3rem; font-family: var(--text); font-weight: 700; font-size: 14.2rem; line-height: 22.7rem; color: #fff; text-align: center; text-decoration: none; border: 3rem solid var(--red); }
+.btn--solid { background: var(--red); }
+.btn--outline { background: transparent; }
+.btn--white { background: #fff; border-color: #fff; color: var(--red); }
+
+/* ---------- Header (fixed, translucent brown) ---------- */
+.hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: 120rem; background: rgba(33, 20, 13, 0.6); color: #fff; }
+.hdr__dine { position: absolute; left: 152rem; top: 31rem; font-family: var(--display); font-weight: 700; font-size: 22rem; line-height: 28rem; text-decoration: none; }
+.hdr__rule { position: absolute; left: 117rem; top: 63rem; width: 142rem; height: 2rem; background: var(--red); }
+.hdr__pin { position: absolute; left: 54rem; top: 71rem; width: 18rem; height: 18rem; }
+.hdr__pin img { width: 100%; height: 100%; }
+.hdr__city { position: absolute; left: 78rem; top: 71rem; font-family: var(--display); font-weight: 700; font-size: 14.2rem; line-height: 18rem; text-decoration: none; white-space: nowrap; }
+.hdr__tel { position: absolute; left: 193rem; top: 71rem; font-family: var(--display); font-weight: 700; font-size: 14.2rem; line-height: 18rem; text-decoration: none; white-space: nowrap; }
+.hdr__logo { position: absolute; left: 538rem; top: -8rem; width: 204rem; height: 204rem; }
+.hdr__logo img { width: 100%; height: 100%; }
+.hdr__menu { position: absolute; left: 867rem; top: 21rem; width: 86rem; height: 47rem; padding: 10rem 0 0 10rem; font-family: var(--display); font-weight: 700; font-size: 19rem; line-height: 26.6rem; text-decoration: none; }
+.hdr__specials { position: absolute; left: 963rem; top: 21rem; width: 136rem; height: 45rem; line-height: 39rem; }
+.hdr__order { position: absolute; left: 1114rem; top: 23rem; width: 144rem; height: 42rem; line-height: 36rem; }
+.hdr__deals { position: absolute; left: 890rem; top: 75rem; width: 368rem; font-family: var(--display); font-weight: 700; font-size: 18.3rem; line-height: 25.7rem; white-space: nowrap; }
+.hdr__deals .join { color: var(--red); }
+.hdr__deals a { text-decoration: underline; }
+.hdr__burger { display: none; }
+
+/* Phone-only navigation overlay */
+.mnav { display: none; }
+
+/* ---------- Hero ---------- */
+.hero { height: 647rem; background: #000; }
+.hero__logo { display: none; }
+.hero__sweet { position: absolute; left: 467rem; top: 595rem; font-family: var(--display); font-weight: 700; font-size: 16rem; line-height: 20.8rem; color: #fff; white-space: nowrap; }
+.hero__ts { position: absolute; left: 660rem; top: 584rem; width: 188rem; height: 33rem; opacity: 0.83; }
+.hero__ts img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Happy Hour (marble) ---------- */
+.hh { height: 655rem; background: #fff; }
+.hh__arc { bottom: 0; height: 150rem; }
+.hh__title { position: absolute; left: 63rem; top: 88rem; width: 411rem; font-family: var(--suez); font-size: 72rem; line-height: 93.5rem; color: var(--red); text-align: center; }
+.hh__time { position: absolute; left: 161rem; top: 297rem; width: 215rem; font-family: var(--arialblack); font-weight: 900; font-size: 58.6rem; line-height: 70.3rem; color: var(--brown); text-align: center; white-space: nowrap; }
+.hh__days { position: absolute; left: 110rem; top: 373rem; width: 317rem; white-space: nowrap; font-family: var(--suez); font-size: 36.2rem; line-height: 47rem; color: #000; text-align: center; }
+.hh__paddle { position: absolute; left: 250rem; top: 89rem; width: 608rem; height: 337rem; }
+.hh__paddle img { width: 100%; height: 100%; object-fit: cover; }
+.hh__pizza { position: absolute; left: 517rem; top: 100rem; width: 304rem; height: 304rem; }
+.hh__pizza img { width: 100%; height: 100%; }
+.hh__slice { position: absolute; left: 870rem; top: 128rem; width: 169rem; height: 137rem; }
+.hh__slice img { width: 100%; height: 100%; object-fit: cover; }
+.hh__price { position: absolute; left: 937rem; top: 49rem; width: 258rem; font-family: var(--suez); font-size: 206.5rem; line-height: 247.8rem; color: var(--red); }
+.hh__item { position: absolute; left: 914rem; top: 301rem; width: 305rem; font-family: var(--bitter); font-weight: 900; font-size: 55.2rem; line-height: 66.3rem; color: #000; text-align: center; }
+
+/* ---------- Fire video strip ---------- */
+.fire { height: 269rem; background: #000; }
+.fire__arc { top: 0; height: 200rem; }
+
+/* ---------- MENU band (red, torn edges) ---------- */
+.menuband { height: 277rem; background: var(--red); }
+.menuband__torn { height: 50rem; }
+.menuband__torn--top { top: 0; }
+.menuband__torn--bot { bottom: 0; }
+.menuband__logo { position: absolute; left: 357rem; top: 39rem; width: 200rem; height: 200rem; }
+.menuband__logo img { width: 100%; height: 100%; }
+.menuband__h { position: absolute; left: 597rem; top: 71rem; font-family: var(--suez); font-size: 99.7rem; line-height: 129.7rem; color: #fff; }
+
+/* ---------- Pizza intro (marble, slice cluster) ---------- */
+.intro { height: 515rem; background: #fff; }
+.intro__h { position: absolute; left: 124rem; top: 42rem; font-family: var(--suez); font-size: 57.9rem; line-height: 75.3rem; color: var(--red); }
+.intro__size { position: absolute; left: 214rem; top: 156rem; font-family: var(--text); font-style: italic; font-size: 20.3rem; line-height: 32.4rem; }
+.intro__slices { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+.intro__slices img { position: absolute; object-fit: cover; left: calc(var(--dx) * 1rem); top: calc(var(--dy) * 1rem); width: calc(var(--dw) * 1rem); height: calc(var(--dh) * 1rem); }
+.intro__p { position: absolute; left: 649rem; top: 150rem; width: 536rem; font-family: var(--text); font-size: 20.3rem; line-height: 32.4rem; }
+
+/* ---------- Menu grid ---------- */
+.grid { height: 1919rem; background: #fff; }
+.grid__crust { position: absolute; left: 113rem; top: 44rem; font-family: var(--text); font-size: 20.3rem; line-height: 32.4rem; white-space: nowrap; }
+.grid__crust b { font-family: var(--display); font-weight: 700; margin-right: 21rem; }
+.grid__crust strong { font-weight: 700; }
+.grid__note { position: absolute; top: 90rem; font-family: var(--text); font-weight: 700; font-style: italic; font-size: 20.3rem; line-height: 32.4rem; white-space: nowrap; }
+.grid__note--veg { left: 113rem; }
+.grid__note--vegan { left: 472rem; }
+.v { font-family: var(--suez); font-style: normal; font-weight: 400; color: var(--red); }
+.grid__note .v { margin-left: 11rem; }
+
+.card { position: absolute; width: 255rem; left: calc(var(--dx) * 1rem); top: calc(var(--dy) * 1rem); }
+.card__name { position: absolute; left: 11rem; top: 21rem; width: 229rem; font-family: var(--suez); font-size: 25rem; line-height: 32.5rem; color: var(--ink); text-align: center; }
+.card__name .v { margin-left: 4rem; }
+.card__price { position: absolute; left: 11rem; top: 55rem; width: 229rem; font-family: var(--suez); font-style: italic; font-size: 20.3rem; line-height: 28.4rem; color: var(--ink); text-align: center; white-space: nowrap; }
+.card__img { position: absolute; left: 22rem; top: 121rem; width: 209rem; height: 209rem; object-fit: cover; }
+.card__desc { position: absolute; left: 14rem; top: 353rem; width: 228rem; font-family: var(--suez); font-style: italic; font-size: 12.2rem; line-height: 17rem; color: #000; text-align: center; }
+.card--2line .card__price { top: 88rem; }
+
+/* ---------- Sides and Salads ---------- */
+.sides { height: 1044rem; background: #fff; }
+.sides__h { position: absolute; left: 103rem; top: 0; font-family: var(--suez); font-size: 50.7rem; line-height: 65.9rem; color: var(--red); }
+.sides .card__name { left: 11rem; top: 18rem; width: 232rem; }
+.sides .card__price { top: 52rem; width: 232rem; }
+.sides .card__img { left: 22rem; top: 95rem; width: 211rem; height: 210rem; }
+.sides .card__desc { left: 11rem; top: 333rem; width: 232rem; }
+.sides__order { position: absolute; left: 564rem; top: 946rem; width: 140rem; height: 44rem; line-height: 38rem; }
+
+/* ---------- Specials (dark wood) ---------- */
+.specials { height: 983rem; background: #000; }
+.specials__tri { top: 0; height: 72rem; }
+.specials__h { position: absolute; left: 128rem; top: 121rem; width: 1024rem; font-family: var(--suez); font-size: 79.4rem; line-height: 103.2rem; color: var(--red); text-align: center; }
+.specials__line { position: absolute; left: 230rem; width: 819rem; height: 3rem; background: var(--red); }
+.specials__line--1 { top: 272rem; }
+.specials__line--2 { top: 807rem; }
+.specials__hh { position: absolute; left: 91rem; top: 331rem; width: 369rem; font-family: var(--suez); font-size: 60.5rem; line-height: 78.6rem; color: var(--red); }
+.specials__when { position: absolute; left: 102rem; top: 421rem; width: 361rem; font-family: Arial, sans-serif; font-size: 25.3rem; line-height: 32.9rem; color: #fff; text-align: center; white-space: nowrap; }
+.specials__price { position: absolute; left: 195rem; top: 456rem; font-family: var(--suez); font-size: 111.3rem; line-height: 133.5rem; color: var(--red); }
+.specials__item { position: absolute; left: 112rem; top: 595rem; width: 305rem; font-family: var(--bitter); font-weight: 900; font-size: 55.2rem; line-height: 66.3rem; color: #fff; text-align: center; }
+.specials__paddle { position: absolute; left: 502rem; top: 363rem; width: 608rem; height: 337rem; }
+.specials__paddle img { width: 100%; height: 100%; object-fit: cover; }
+.specials__pizza { position: absolute; left: 773rem; top: 374rem; width: 304rem; height: 304rem; }
+.specials__pizza img { width: 100%; height: 100%; }
+.specials__slice { position: absolute; left: 921rem; top: 421rem; width: 148rem; height: 101rem; }
+.specials__slice img { width: 100%; height: 100%; object-fit: cover; }
+.specials__order { position: absolute; left: 573rem; top: 871rem; width: 134rem; height: 44rem; line-height: 38rem; }
+
+/* ---------- Gift card (red) ---------- */
+.gift { height: 500rem; background: var(--red); }
+.gift__h { position: absolute; left: 143rem; top: 97rem; width: 379rem; font-family: var(--suez); font-size: 62rem; line-height: 80.6rem; color: #fff; }
+.gift__card { position: absolute; left: 640rem; top: 67rem; width: 458rem; height: 305rem; }
+.gift__card img { width: 100%; height: 100%; object-fit: cover; }
+.gift__btn { position: absolute; left: 743rem; top: 382rem; width: 252rem; height: 55rem; font-family: var(--display); font-size: 20.3rem; line-height: 49rem; border-radius: 30.4rem; }
+
+/* ---------- You said it (reviews) ---------- */
+.said { height: 617rem; background: #fff; }
+.said__paddle { position: absolute; left: 72rem; top: 18rem; width: 1050rem; height: 581rem; }
+.said__paddle img { width: 100%; height: 100%; object-fit: cover; }
+.said__h { position: absolute; left: 68rem; top: 73rem; width: 379rem; white-space: nowrap; font-family: var(--suez); font-size: 72rem; line-height: 86.4rem; color: var(--red); text-align: center; }
+.said__stars { position: absolute; left: 630rem; top: 113rem; width: 300rem; height: 52rem; display: flex; justify-content: space-between; }
+.said__stars svg { width: 52rem; height: 52rem; fill: var(--red); }
+.said__card { position: absolute; left: 565rem; top: 177rem; width: 424rem; height: 327rem; border-radius: 20rem; }
+.said__slide { position: absolute; inset: 0; opacity: 0; transition: opacity .6s; }
+.said__slide.is-on { opacity: 1; }
+.said__quote { position: absolute; left: 36rem; top: 20rem; width: 353rem; font-family: var(--display); font-weight: 700; font-size: 22rem; line-height: 30.8rem; color: #000; text-align: center; }
+.said__who { position: absolute; right: 35rem; width: 353rem; font-family: var(--display); font-style: italic; font-size: 22rem; line-height: 30.8rem; color: #000; text-align: right; }
+.said__arrow { position: absolute; top: 188rem; width: 30rem; height: 30rem; padding: 0; border: 2rem solid var(--red); border-radius: 999px; background: transparent; cursor: pointer; }
+.said__arrow svg { width: 18rem; height: 18rem; margin: 4rem auto 0; fill: #000; }
+.said__prev { left: 208rem; }
+.said__prev svg { transform: rotate(90deg); }
+.said__next { left: 261rem; }
+.said__next svg { transform: rotate(-90deg); }
+.said__pizza { position: absolute; left: 520rem; top: 381rem; width: 367rem; height: 335rem; }
+.said__pizza img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ---------- Dark strip + wood logs ---------- */
+.strip { height: 25rem; background: var(--brown); }
+.wood { height: 386rem; background: #fff; }
+.wood__arc { bottom: 0; height: 113rem; }
+
+/* ---------- Footer (red) ---------- */
+.ftr { position: relative; height: 525rem; background: var(--red); color: #fff; overflow: hidden; }
+.ftr__logo { position: absolute; left: 64rem; top: 0; width: 260rem; height: 260rem; }
+.ftr__logo img { width: 100%; height: 100%; }
+.ftr__col1 { position: absolute; left: 378rem; top: 86rem; margin: 0; padding: 0; list-style: none; }
+.ftr__col1 li { height: 37rem; }
+.ftr__col1 a { font-family: var(--display); font-weight: 700; font-size: 18.2rem; line-height: 23rem; text-decoration: none; white-space: nowrap; }
+.ftr__col2 { position: absolute; left: 684rem; top: 82rem; margin: 0; padding: 0; list-style: none; }
+.ftr__col2 li { height: 33.5rem; }
+.ftr__col2 a { display: block; width: 142rem; padding-top: 7rem; font-family: var(--text); font-weight: 700; font-size: 16rem; line-height: 20rem; text-decoration: none; white-space: nowrap; }
+.ftr__social { position: absolute; left: 125rem; top: 259rem; display: flex; gap: 16rem; }
+.ftr__social a { width: 35rem; height: 35rem; }
+.ftr__social img { width: 100%; height: 100%; object-fit: contain; }
+.ftr__rule { position: absolute; left: 64rem; top: 372rem; width: 1152rem; height: 2rem; background: #fff; }
+.ftr__legal { position: absolute; top: 391rem; margin: 0; font-family: var(--display); font-weight: 700; font-size: 18.2rem; line-height: 23rem; text-decoration: none; white-space: nowrap; }
+.ftr__legal--terms { left: 342rem; }
+.ftr__legal--privacy { left: 550rem; }
+.ftr__legal--access { left: 704rem; }
+.ftr__addr { position: absolute; left: 316rem; top: 438rem; width: 648rem; font-family: var(--display); font-weight: 700; font-size: 14.2rem; line-height: 18.4rem; text-align: center; white-space: nowrap; }
+.ftr__copy { position: absolute; left: 0; top: 479rem; width: 100%; font-family: var(--text); font-size: 15rem; line-height: 19rem; text-align: center; }
+
+/* ---------- Legal pages ---------- */
+.legal { padding: 160rem 0 90rem; max-width: 980rem; margin: 0 auto; font-family: var(--text); font-size: 16rem; line-height: 1.7; color: #000; }
+.legal h1 { font-family: var(--suez); font-size: 48rem; line-height: 1.2; margin: 0 0 8rem; color: var(--red); font-weight: 400; }
+.legal .eff { color: #555; margin: 0 0 32rem; }
+.legal h2 { font-family: var(--display); font-weight: 700; font-size: 18rem; margin: 28rem 0 6rem; }
+.legal p, .legal li { margin: 0 0 10rem; }
+.legal ul { margin: 0 0 10rem; padding-left: 24rem; }
+
+/* ---------- Entrance motion (Wix slides these in as the page scrolls) ---------- */
+.hh__title, .hh__time, .hh__days, .hh__paddle, .hh__pizza { will-change: transform; }
+
+/* =====================================================================
+   PHONE LAYOUT — measured at 375px wide, 1rem = 1px at 375px
+   ===================================================================== */
+@media (max-width: 750px) {
+  html { font-size: calc(100vw / 375); }
+  .btn { border-radius: 20rem; }
+
+  /* Header: ORDER / SPECIALS / hamburger, address line below */
+  .hdr { height: 127rem; }
+  .hdr__dine, .hdr__rule, .hdr__logo, .hdr__menu, .hdr__deals { display: none; }
+  .hdr__order { left: 19rem; top: 27rem; width: 99rem; height: 36rem; border: 0; font-size: 12rem; line-height: 36rem; }
+  .hdr__specials { left: 142rem; top: 27rem; width: 103rem; height: 36rem; font-size: 16rem; line-height: 30rem; }
+  .hdr__pin { left: 29rem; top: 101rem; width: 16rem; height: 16rem; }
+  .hdr__city { left: 47rem; top: 101rem; font-size: 12rem; line-height: 15rem; }
+  .hdr__tel { left: 138rem; top: 101rem; font-size: 12rem; line-height: 15rem; }
+  .hdr__burger { display: block; position: absolute; left: 268rem; top: 15rem; width: 60rem; height: 60rem; padding: 0; border: 0; background: transparent; cursor: pointer; }
+  .hdr__burger svg { width: 60rem; height: 60rem; fill: #fff; }
+
+  .mnav { display: block; position: fixed; inset: 0; z-index: 60; background: var(--red); color: #fff; transform: translateX(100%); transition: transform .3s; overflow-y: auto; }
+  .mnav.is-open { transform: none; }
+  .mnav__close { position: absolute; right: 30rem; top: 28rem; width: 24rem; height: 24rem; padding: 0; border: 0; background: transparent; cursor: pointer; }
+  .mnav__close svg { width: 24rem; height: 24rem; stroke: #fff; stroke-width: 2; }
+  .mnav__list { margin: 118rem 0 0; padding: 0; list-style: none; }
+  .mnav__list a { display: block; height: 52rem; font-family: var(--text); font-weight: 700; font-size: 20rem; line-height: 52rem; text-align: center; text-decoration: none; }
+  .mnav__logo { width: 255rem; height: 255rem; margin: 110rem auto 0; }
+  .mnav__logo img { width: 100%; height: 100%; }
+  .mnav__social { display: flex; justify-content: center; gap: 12rem; margin-top: 10rem; padding-bottom: 20rem; }
+  .mnav__social a { width: 32rem; height: 32rem; }
+  .mnav__social img { width: 100%; height: 100%; object-fit: contain; }
+
+  /* Hero */
+  .hero { height: 794rem; }
+  .hero__logo { display: block; position: absolute; left: 40rem; top: 250rem; width: 295rem; height: 295rem; }
+  .hero__logo img { width: 100%; height: 100%; }
+  .hero__sweet { left: 93rem; top: 705rem; }
+  .hero__ts { left: 93rem; top: 736rem; }
+
+  /* Happy Hour */
+  .hh { height: 391rem; }
+  .hh__arc { height: 60rem; }
+  .hh__title { left: 59rem; top: 19rem; width: 258rem; font-size: 45.2rem; line-height: 58.8rem; }
+  .hh__time { left: 36rem; top: 87rem; width: 110rem; font-size: 30rem; line-height: 36rem; }
+  .hh__days { left: 31rem; top: 126rem; width: 123rem; font-size: 14rem; line-height: 18.2rem; }
+  .hh__paddle { left: 38rem; top: 96rem; width: 301rem; height: 167rem; }
+  .hh__pizza { left: 172rem; top: 103rem; width: 156rem; height: 156rem; }
+  .hh__slice { left: 368rem; top: 107rem; width: 93rem; height: 93rem; }
+  .hh__price { left: 66rem; top: 206rem; width: 76rem; font-size: 60.5rem; line-height: 72.6rem; }
+  .hh__item { left: 37rem; top: 279rem; width: 134rem; font-size: 16.2rem; line-height: 19.4rem; }
+
+  .fire { height: 119rem; }
+  .fire__arc { height: 82rem; }
+
+  .menuband { height: 111rem; }
+  .menuband__logo { left: 59rem; top: -7rem; width: 92rem; height: 92rem; }
+  .menuband__h { left: 163rem; top: 8rem; font-size: 46.5rem; line-height: 60.5rem; }
+
+  .intro { height: 708rem; }
+  .intro__h { left: 103rem; top: 0; width: 168rem; font-size: 64.8rem; line-height: 84.2rem; text-align: center; }
+  .intro__size { left: 105rem; top: 87rem; font-weight: 700; font-size: 16rem; line-height: 25.5rem; }
+  .intro__p { left: 29rem; top: 416rem; width: 323rem; font-size: 14rem; line-height: 22.4rem; }
+  .intro__slices img { left: calc(var(--px) * 1rem); top: calc(var(--py) * 1rem); width: calc(var(--pw) * 1rem); height: calc(var(--ph) * 1rem); }
+
+  /* Menu grid: two columns */
+  .grid { height: 2332rem; }
+  .grid__crust { left: 28rem; top: 14rem; font-size: 12rem; line-height: 19.2rem; }
+  .grid__crust b { display: block; margin: 0 0 9rem; font-size: 16rem; line-height: 25.6rem; }
+  .grid__note { font-size: 12rem; line-height: 19.2rem; }
+  .grid__note--veg { left: 28rem; top: 71rem; }
+  .grid__note--vegan { left: 28rem; top: 100rem; }
+  .grid__note .v { display: none; }
+  .card { width: 164rem; left: calc(var(--px) * 1rem); top: calc(var(--py) * 1rem); }
+  .card__name { left: -5rem; top: 6rem; width: 174rem; font-size: 16rem; line-height: 20.8rem; }
+  .card__price { left: 0; top: 29rem; width: 164rem; font-size: 14rem; line-height: 19.6rem; }
+  .card__img { left: 7rem; top: 53rem; width: 147rem; height: 147rem; }
+  .card__desc { left: 0; top: 206rem; width: 164rem; font-size: 10rem; line-height: 14rem; }
+  .card--2line .card__price { top: 29rem; }
+
+  .sides { height: 996rem; }
+  .sides__h { left: 30rem; top: 0; width: 313rem; font-size: 40rem; line-height: 52rem; text-align: center; }
+  .sides .card { width: 157rem; }
+  .sides .card__name { left: 0; top: 5rem; width: 159rem; }
+  .sides .card__price { left: 0; top: 27rem; width: 159rem; }
+  .sides .card__img { left: 9rem; top: 54rem; width: 138rem; height: 137rem; }
+  .sides .card__desc { left: 4rem; top: 205rem; width: 151rem; }
+  .sides__order { left: 122rem; top: 945rem; width: 132rem; height: 33rem; border-width: 0.5rem; font-size: 13.9rem; line-height: 32rem; }
+
+  .specials { height: 478rem; }
+  .specials__h { left: 38rem; top: 80rem; width: 300rem; font-size: 40rem; line-height: 52rem; }
+  .specials__line { left: 53rem; width: 270rem; }
+  .specials__line--1 { top: 155rem; }
+  .specials__line--2 { top: 393rem; }
+  .specials__hh { left: 29rem; top: 172rem; width: 303rem; font-size: 40rem; line-height: 52rem; }
+  .specials__when { left: 80rem; top: 236rem; width: 200rem; font-size: 14rem; line-height: 18.2rem; }
+  .specials__price { left: 81rem; top: 269rem; font-size: 54rem; line-height: 64.8rem; }
+  .specials__item { left: 39rem; top: 338rem; width: 170rem; font-size: 20.6rem; line-height: 24.7rem; }
+  .specials__paddle { left: 171rem; top: 272rem; width: 175rem; height: 97rem; }
+  .specials__pizza { left: 244rem; top: 278rem; width: 90rem; height: 90rem; }
+  .specials__slice { left: 287rem; top: 292rem; width: 46rem; height: 31rem; }
+  .specials__order { left: 129rem; top: 418rem; width: 117rem; height: 35rem; border-width: 0.5rem; font-size: 13.9rem; line-height: 34rem; }
+
+  .gift { height: 218rem; }
+  .gift__h { left: 42rem; top: 28rem; width: 111rem; font-size: 18.2rem; line-height: 23.6rem; }
+  .gift__card { left: 184rem; top: 22rem; width: 160rem; height: 107rem; }
+  .gift__btn { left: 100rem; top: 158rem; width: 175rem; height: 38rem; border-width: 0.5rem; font-size: 17rem; line-height: 37rem; }
+
+  .said { height: 675rem; }
+  .said__paddle { left: 28rem; top: 100rem; width: 320rem; height: 576rem; }
+  .said__h { left: 83rem; top: 28rem; width: 210rem; font-size: 40rem; line-height: 48rem; }
+  .said__stars { left: 88rem; top: 160rem; width: 200rem; height: 40rem; }
+  .said__stars svg { width: 40rem; height: 40rem; }
+  .said__card { left: 80rem; top: 219rem; width: 223rem; height: 206rem; }
+  .said__quote { left: 6rem; top: 0; width: 211rem; font-family: Arial, sans-serif; font-size: 13rem; line-height: 18.2rem; text-align: left; }
+  .said__who { right: 6rem; width: 211rem; font-family: Arial, sans-serif; font-weight: 700; font-size: 14rem; line-height: 19.6rem; }
+  .said__arrow { display: none; }
+  .said__pizza { left: 41rem; top: 269rem; width: 196rem; height: 177rem; }
+
+  .strip { height: 7rem; }
+  .wood { height: 113rem; }
+  .wood__arc { height: 50rem; }
+
+  .ftr { height: 641rem; }
+  .ftr__logo { left: 130rem; top: 9rem; width: 115rem; height: 115rem; }
+  .ftr__col1 { left: 18rem; top: 138rem; }
+  .ftr__col1 li { height: 28rem; }
+  .ftr__col1 a { font-size: 17rem; line-height: 20rem; }
+  .ftr__col2 { left: 18rem; top: 192rem; }
+  .ftr__col2 li { height: 29.5rem; }
+  .ftr__col2 a { width: auto; padding-top: 5rem; font-size: 17rem; line-height: 20rem; }
+  .ftr__social { left: 110rem; top: 363rem; gap: 13rem; }
+  .ftr__social a { width: 71rem; height: 71rem; }
+  .ftr__rule { left: 18rem; top: 455rem; width: 337rem; }
+  .ftr__legal { top: 476rem; font-size: 10rem; line-height: 13rem; white-space: normal; }
+  .ftr__legal--terms { left: 97rem; width: 53rem; }
+  .ftr__legal--privacy { left: 164rem; width: 36rem; }
+  .ftr__legal--access { left: 209rem; width: 61rem; }
+  .ftr__addr { left: 19rem; top: 524rem; width: 336rem; font-size: 10rem; line-height: 13rem; white-space: normal; }
+  .ftr__copy { top: 600rem; font-size: 13.5rem; line-height: 17rem; }
+
+  .legal { padding: 150rem 16rem 48rem; font-size: 14rem; }
+  .legal h1 { font-size: 30rem; }
+}
