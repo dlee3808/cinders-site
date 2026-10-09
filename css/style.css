@@ -116,8 +116,8 @@ video.cover { background: #000 center / cover no-repeat; }
 .card__name { position: absolute; left: 11rem; top: 21rem; width: 229rem; font-family: var(--suez); font-size: 25rem; line-height: 32.5rem; color: var(--ink); text-align: center; }
 .card__name .v { margin-left: 4rem; }
 .card__price { position: absolute; left: 11rem; top: 55rem; width: 229rem; font-family: var(--suez); font-style: italic; font-size: 20.3rem; line-height: 28.4rem; color: var(--ink); text-align: center; white-space: nowrap; }
-.card__img { position: absolute; left: 22rem; top: 121rem; width: 209rem; height: 209rem; object-fit: cover; animation: spin 4s linear infinite paused; }
-.card:hover .card__img { animation-play-state: running; }
+.card__img { position: absolute; left: 22rem; top: 121rem; width: 209rem; height: 209rem; object-fit: cover; animation-name: spin; animation-duration: 4s; animation-timing-function: linear; animation-iteration-count: infinite; animation-play-state: paused; }
+.card:hover .card__img, .card__img:hover { animation-play-state: running; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .card__desc { position: absolute; left: 14rem; top: 353rem; width: 228rem; font-family: var(--suez); font-style: italic; font-size: 12.2rem; line-height: 17rem; color: #000; text-align: center; }
 .card--2line .card__price { top: 88rem; }
